@@ -1,0 +1,372 @@
+/* Intro refresh: elegant title + celebratory light bursts
+   This file intentionally overrides only the intro area. */
+
+.intro {
+  min-height: 100svh;
+  justify-content: flex-start;
+  gap: clamp(18px, 2.8vh, 30px);
+  padding: clamp(118px, 15vh, 154px) 20px clamp(52px, 7vh, 78px);
+}
+
+.intro-copy {
+  width: min(960px, calc(100vw - 40px));
+  margin: 0 auto;
+  padding-inline: 10px;
+}
+
+.intro-copy::before {
+  content: "GRADUATION CEREMONY · CLASS OF 2026";
+  display: block;
+  margin-bottom: clamp(10px, 1.6vh, 16px);
+  color: var(--blue-deep);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: clamp(10px, 0.9vw, 13px);
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.intro-copy h1 {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  color: var(--blue-dark);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(58px, 7.2vw, 112px);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  text-transform: none;
+  text-wrap: balance;
+  text-shadow: 0 12px 32px rgba(64, 91, 107, 0.12);
+}
+
+.intro-copy h1::after {
+  content: "";
+  display: block;
+  width: clamp(72px, 8vw, 126px);
+  height: 2px;
+  margin: clamp(16px, 2.2vh, 24px) auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.intro-copy > span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  margin: -18px auto 0;
+  border: 1px solid rgba(111, 143, 163, 0.32);
+  border-radius: 999px;
+  color: var(--blue-dark);
+  background: rgba(247, 251, 253, 0.86);
+  box-shadow: 0 10px 24px rgba(64, 91, 107, 0.12);
+  font-size: 12px;
+}
+
+.envelope-stage {
+  width: min(560px, 72vw);
+  max-width: 560px;
+}
+
+.envelope {
+  max-width: 560px;
+}
+
+/* Replace the rocket-like fireworks with restrained radial celebration bursts. */
+.intro-fireworks {
+  z-index: 3;
+  opacity: 0.95;
+}
+
+.firework {
+  --burst-size: 150px;
+  width: var(--burst-size);
+  height: var(--burst-size);
+  margin: calc(var(--burst-size) / -2) 0 0 calc(var(--burst-size) / -2);
+  border-radius: 50%;
+  filter: drop-shadow(0 10px 24px rgba(64, 91, 107, 0.12));
+}
+
+.firework-1 {
+  left: 12%;
+  top: 34%;
+  --burst-size: 142px;
+  --delay: -0.4s;
+}
+
+.firework-2 {
+  right: 10%;
+  top: 30%;
+  --burst-size: 164px;
+  --delay: -2.1s;
+}
+
+.firework-3 {
+  left: 20%;
+  bottom: 12%;
+  --burst-size: 118px;
+  --delay: -3.5s;
+}
+
+.firework-4 {
+  right: 18%;
+  bottom: 10%;
+  --burst-size: 128px;
+  --delay: -4.8s;
+}
+
+.firework-rocket {
+  display: none !important;
+}
+
+.firework::before,
+.firework::after {
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 0;
+  height: 0;
+  border: 1px solid rgba(230, 162, 58, 0.46);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: celebrationRing 5.8s ease-out infinite;
+  animation-delay: var(--delay);
+}
+
+.firework::after {
+  border-color: rgba(111, 143, 163, 0.42);
+  animation-delay: calc(var(--delay) + 0.18s);
+}
+
+.firework-burst {
+  position: absolute;
+  inset: 0;
+  animation: celebrationGlow 5.8s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.firework-burst i {
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: clamp(13px, 1.4vw, 21px);
+  border-radius: 999px;
+  transform-origin: 50% calc(var(--distance) * -0.36);
+  color: var(--gold);
+  background: linear-gradient(180deg, rgba(255,255,255,0), currentColor 55%, #fff);
+  box-shadow: 0 0 9px currentColor;
+  opacity: 0;
+  animation: celebrationRay 5.8s cubic-bezier(.18,.72,.2,1) infinite !important;
+  animation-delay: calc(var(--delay) + var(--particle-delay)) !important;
+}
+
+.firework-burst i:nth-child(3n + 1) {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.firework-burst i:nth-child(3n + 2) {
+  color: #82a8be;
+}
+
+.firework-burst i:nth-child(3n) {
+  color: #e6a23a;
+}
+
+@keyframes celebrationRay {
+  0%, 20% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateY(0) scaleY(0.15);
+  }
+  26% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.95;
+    transform: rotate(var(--angle)) translateY(calc(var(--distance) * -0.72)) scaleY(1);
+  }
+  62%, 100% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateY(calc(var(--distance) * -1)) scaleY(0.45);
+  }
+}
+
+@keyframes celebrationRing {
+  0%, 18% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  26% {
+    opacity: 0.7;
+  }
+  52% {
+    width: 76%;
+    height: 76%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes celebrationGlow {
+  0%, 18%, 65%, 100% {
+    filter: blur(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  42% {
+    filter: blur(0.25px);
+    opacity: 0.88;
+  }
+}
+
+@media (max-height: 820px) and (min-width: 761px) {
+  .intro {
+    padding-top: 102px;
+    gap: 14px;
+  }
+
+  .intro-copy::before {
+    margin-bottom: 8px;
+  }
+
+  .intro-copy h1 {
+    font-size: clamp(54px, 6.4vw, 88px);
+  }
+
+  .intro-copy h1::after {
+    margin-top: 14px;
+  }
+
+  .envelope-stage {
+    width: min(500px, 64vw);
+    max-width: 500px;
+  }
+
+  .envelope {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 760px) {
+  .intro {
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 96px 12px 54px;
+  }
+
+  .intro-copy {
+    width: calc(100vw - 24px);
+  }
+
+  .intro-copy::before {
+    max-width: 310px;
+    margin: 0 auto 10px;
+    font-size: 9px;
+    line-height: 1.5;
+    letter-spacing: 0.2em;
+  }
+
+  .intro-copy h1 {
+    max-width: 520px;
+    font-size: clamp(49px, 14.2vw, 78px);
+    line-height: 0.84;
+  }
+
+  .intro-copy h1::after {
+    margin-top: 16px;
+  }
+
+  .intro-copy > span {
+    width: 30px;
+    height: 30px;
+    margin-top: -16px;
+  }
+
+  .envelope-stage {
+    width: min(410px, 92vw);
+    max-width: 410px;
+  }
+
+  .envelope {
+    max-width: 410px;
+  }
+
+  .firework-1 {
+    left: -1%;
+    top: 36%;
+    --burst-size: 96px;
+  }
+
+  .firework-2 {
+    right: -3%;
+    top: 31%;
+    --burst-size: 108px;
+  }
+
+  .firework-3 {
+    left: 9%;
+    bottom: 7%;
+    --burst-size: 82px;
+  }
+
+  .firework-4 {
+    right: 8%;
+    bottom: 6%;
+    --burst-size: 86px;
+  }
+
+  .firework-burst i {
+    width: 2px;
+    height: 13px;
+  }
+}
+
+@media (max-width: 430px) {
+  .intro {
+    padding-top: 88px;
+    gap: 12px;
+  }
+
+  .intro-copy::before {
+    max-width: 270px;
+    font-size: 8px;
+  }
+
+  .intro-copy h1 {
+    font-size: clamp(45px, 15vw, 64px);
+    line-height: 0.86;
+  }
+
+  .envelope-stage {
+    width: min(350px, 94vw);
+    max-width: 350px;
+  }
+
+  .envelope {
+    max-width: 350px;
+  }
+
+  .tap-hint {
+    margin-bottom: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firework::before,
+  .firework::after,
+  .firework-burst,
+  .firework-burst i {
+    animation: none !important;
+  }
+
+  .firework {
+    opacity: 0.38;
+  }
+}
