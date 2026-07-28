@@ -42,17 +42,18 @@ const CONFIG = {
   galleryUrl: "https://drive.google.com/drive/folders/1kc_jkw_1EO0cxVIInOHLZhyz4uokBP-w?usp=sharing",
   audioUrl:nhacNen,
   invitationMessage:
-    "Vậy là một hành trình học tập đã đi đến cột mốc đáng nhớ. Sáng trân trọng mời bạn dành thời gian đến chung vui, cùng lưu lại những khoảnh khắc tốt đẹp và đánh dấu ngày Sáng chính thức khép lại một chặng đường để bước sang hành trình mới. Sự hiện diện của bạn sẽ khiến ngày đặc biệt này trở nên trọn vẹn hơn.",
+    "Vậy là một hành trình học tập đã đi đến cột mốc đáng nhớ. Anh/em/tôi trân trọng mời anh/chị/em/bạn dành thời gian đến chung vui, cùng lưu lại những khoảnh khắc tốt đẹp và đánh dấu ngày mình chính thức khép lại một chặng đường để bước sang hành trình mới. Sự hiện diện của các bạn sẽ khiến ngày đặc biệt này trở nên trọn vẹn hơn.",
 };
 
-// Khi tạo Google Form mới, thay action và ba mã entry bên dưới.
 const GOOGLE_FORM = {
-  enabled: false,
-  action: "",
+  enabled: true,
+  action:
+    "https://docs.google.com/forms/d/e/1FAIpQLSdiOCNIDjRqD2sXT7WOJac326U-iD3y4IzfSIcjTy2703pHNg/formResponse",
+
   fields: {
-    guestId: "entry.000000001",
-    guestName: "entry.000000002",
-    attendStatus: "entry.000000003",
+    guestId: "entry.731183052",
+    guestName: "entry.1386012636",
+    attendStatus: "entry.435539801",
   },
 };
 
@@ -622,7 +623,7 @@ function ThankYouSection({ guest }) {
           <div className="thank-copy">
             <p>Lời cảm ơn</p>
             <h2>Cảm ơn vì đã đồng hành!</h2>
-            <span>Hẹn gặp {guest.displayName} lúc 15:00 ngày 07.08.2026.</span>
+            <span>Hẹn gặp {guest.displayName} lúc 15:00-17:00 ngày 07.08.2026.</span>
             <strong>{CONFIG.shortName}</strong>
           </div>
 

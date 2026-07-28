@@ -1,23 +1,73 @@
 export const GUESTS = {
-  "ban-than": {
+  "nam": {
+    name: "Thế Nam",
+    displayName: "Thế Nam",
+    group: "Bạn bè",
+  },
+  "dieulinh": {
+    name: "Diệu Linh",
+    displayName: "Diệu Linh",
+    group: "Bạn bè",
+  },
+  "maitrang": {
+    name: "Mai Trang",
+    displayName: "Mai Trang",
+    group: "Bạn bè",
+  },
+  "quocanh": {
+    name: "Quốc Anh",
+    displayName: "Quốc Anh",
+    group: "Bạn bè",
+  },
+  "thanhthao": {
+    name: "Em Thảo",
+    displayName: "Em Thảo",
+    group: "Bạn bè",
+  },
+  "nguyet": {
+    name: "Nguyệt",
+    displayName: "Nguyệt",
+    group: "Bạn bè",
+  },
+  "nam": {
     name: "Minh Anh",
     displayName: "Minh Anh",
     group: "Bạn bè",
   },
-  "thay-co": {
-    name: "Thầy cô",
-    displayName: "thầy cô",
-    group: "Thầy cô",
+  "nhumai": {
+    name: "Như Mai",
+    displayName: "Như Mai",
+    group: "Bạn bè",
   },
-  "gia-dinh": {
-    name: "Gia đình",
-    displayName: "cả nhà",
-    group: "Gia đình",
+  "nangvungcao": {
+    name: "Thu Hiền, Yến Chi, Ánh Hoàn",
+    displayName: "Thu Hiền, Yến Chi, Ánh Hoàn",
+    group: "Bạn bè",
   },
-  "dong-nghiep": {
-    name: "Anh chị đồng nghiệp",
-    displayName: "anh chị",
-    group: "Đồng nghiệp",
+  "giangmee": {
+    name: "Giang Mee",
+    displayName: "Giang Mee",
+    group: "Bạn bè",
+  },
+  "nhat": {
+    name: "Nhật",
+    displayName: "Nhật",
+    group: "Bạn bè",
+  },
+  "honghanh": {
+    name: "Hồng Hạnh",
+    displayName: "Hồng Hạnh",
+    group: "Bạn bè",
+  },
+  "nguyenmai": {
+    name: "Nguyễn Mai",
+    displayName: "Nguyễn Mai",
+    group: "Bạn bè",
+  },
+  "kimloan": {
+    name: "Kim Loan",
+    displayName: "Kim Loan",
+    group: "Bạn bè",
   },
 };
 
