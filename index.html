@@ -34,11 +34,42 @@
         min-height: 100svh;
       }
 
-      #details .detail-module p a {
+      #details .detail-module {
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      #details .detail-primary-title {
+        max-width: 100%;
+        margin: 14px 0 0;
         color: var(--blue-dark);
-        font-weight: 800;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(25px, 2.7vw, 38px);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+        overflow-wrap: anywhere;
+      }
+
+      #details .detail-primary-title a {
+        color: inherit;
+        font-weight: inherit;
         text-decoration: underline;
-        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 5px;
+      }
+
+      @media (max-width: 760px) {
+        #details .detail-module {
+          min-height: 240px;
+        }
+
+        #details .detail-primary-title {
+          font-size: clamp(27px, 8vw, 36px);
+        }
       }
     </style>
   </head>
