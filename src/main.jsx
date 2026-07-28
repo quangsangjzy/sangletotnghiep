@@ -34,12 +34,12 @@ const CONFIG = {
   ceremonyDate: "2026-08-07T15:00:00+07:00",
   timeLabel: "15:00",
   venueName: "Trường Đại học Công nghệ Đông Á",
-  venueAddress: "Nam Từ Liêm, Hà Nội",
+  venueAddress: "Phố Phan Tây Nhạc, Nam Từ Liêm, Hà Nội",
   dressCode:
     "Trang phục lịch sự; ưu tiên trắng, kem, xanh navy hoặc đen để hình ảnh hài hòa.",
   mapsUrl:
     "https://maps.google.com/?q=Truong%20Dai%20hoc%20Cong%20nghe%20Dong%20A%20Nam%20Tu%20Liem%20Ha%20Noi",
-  galleryUrl: "https://drive.google.com/",
+  galleryUrl: "https://drive.google.com/drive/folders/1kc_jkw_1EO0cxVIInOHLZhyz4uokBP-w?usp=sharing",
   audioUrl:nhacNen,
   invitationMessage:
     "Vậy là một hành trình học tập đã đi đến cột mốc đáng nhớ. Sáng trân trọng mời bạn dành thời gian đến chung vui, cùng lưu lại những khoảnh khắc tốt đẹp và đánh dấu ngày Sáng chính thức khép lại một chặng đường để bước sang hành trình mới. Sự hiện diện của bạn sẽ khiến ngày đặc biệt này trở nên trọn vẹn hơn.",
@@ -159,7 +159,7 @@ function Header() {
   const [open, setOpen] = useState(false);
   const links = [
     ["intro", "Thiệp mời"],
-    ["invitation", "Lời mời"],
+    ["invitation", "Thư mời"],
     ["details", "Thông tin"],
     ["album", "Album"],
     ["rsvp", "Xác nhận"],
@@ -354,16 +354,13 @@ function PersonalInvitation({ guest }) {
       <div className="layout-shell">
         <article className="editorial-invite invitation-no-photo" data-reveal>
           <aside className="invite-rail">
-            <span>01</span>
-            <strong>Graduation invitation</strong>
-            <small>{guest.group}</small>
+            <strong>Thư mời</strong>
           </aside>
 
           <div className="editorial-copy">
             <p className="eyebrow">Thư mời tham dự</p>
             <h2>
               Lễ tốt nghiệp
-              <span>{CONFIG.className}</span>
             </h2>
 
             <div className="guest-message-card">
@@ -373,8 +370,8 @@ function PersonalInvitation({ guest }) {
           </div>
 
           <aside className="invitation-date-panel">
-            <span className="date-panel-label">Save the date</span>
-            <strong className="date-panel-time">15:00</strong>
+            <span className="date-panel-label">Thời gian</span>
+            <strong className="date-panel-time">15:00-17:00</strong>
             <div className="date-panel-rule" />
             <strong className="date-panel-date">07.08</strong>
             <span className="date-panel-year">2026</span>
@@ -452,7 +449,6 @@ function EventDetails() {
               <span className="detail-icon">{item.icon}</span>
               <small>{item.label}</small>
               <h3>{item.title}</h3>
-              <p>{item.text}</p>
             </article>
           ))}
         </div>
@@ -538,10 +534,6 @@ function RsvpSection({ guest }) {
           <div className="rsvp-copy">
             <p>RSVP / Phản hồi</p>
             <h2>Rất mong được đón tiếp bạn</h2>
-            <span>
-              Xác nhận giúp {CONFIG.shortName} để việc chuẩn bị cho ngày tốt nghiệp được
-              chu đáo hơn nhé.
-            </span>
           </div>
 
           <div className="rsvp-ticket">
@@ -628,7 +620,7 @@ function ThankYouSection({ guest }) {
       <div className="layout-shell">
         <article className="thank-editorial thank-no-photo" data-reveal>
           <div className="thank-copy">
-            <p>Thank you for being part of the journey</p>
+            <p>Lời cảm ơn</p>
             <h2>Cảm ơn vì đã đồng hành!</h2>
             <span>Hẹn gặp {guest.displayName} lúc 15:00 ngày 07.08.2026.</span>
             <strong>{CONFIG.shortName}</strong>
