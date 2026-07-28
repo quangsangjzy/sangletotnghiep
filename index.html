@@ -14,11 +14,6 @@
     <link rel="stylesheet" href="/src/invitation-refresh.css" />
 
     <style>
-      /*
-       * Intro gate: trước khi người xem bấm vào phong bì, trang chỉ hiển thị
-       * phần header thương hiệu và intro. Nội dung phía dưới chưa thể cuộn tới,
-       * chưa thể truy cập bằng menu hoặc điều hướng nhanh.
-       */
       html.invitation-locked,
       body.invitation-locked {
         width: 100%;
@@ -37,6 +32,13 @@
 
       body.invitation-locked #intro {
         min-height: 100svh;
+      }
+
+      #details .detail-module p a {
+        color: var(--blue-dark);
+        font-weight: 800;
+        text-decoration: underline;
+        text-underline-offset: 3px;
       }
     </style>
   </head>
@@ -70,5 +72,6 @@
 
     <script type="module" src="/src/main.jsx"></script>
     <script type="module" src="/src/invitation-refresh.js"></script>
+    <script type="module" src="/src/details-refresh.js"></script>
   </body>
 </html>
