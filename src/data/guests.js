@@ -69,6 +69,11 @@ export const GUESTS = {
     displayName: "Kim Loan",
     group: "Bạn bè",
   },
+    "hien": {
+    name: "Thu Hiền",
+    displayName: "Thu Hiền",
+    group: "Bạn bè",
+  },
 };
 
 export const DEFAULT_GUEST = {
