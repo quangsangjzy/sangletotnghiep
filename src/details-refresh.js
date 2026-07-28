@@ -4,20 +4,34 @@ const updateEventDetails = () => {
 
   if (!section || !modules || modules.length < 3) return false;
 
-  const [, venueModule, contactModule] = modules;
+  const [timeModule, venueModule, contactModule] = modules;
+
+  const setupSingleTitle = (module, title, html = false) => {
+    const heading = module.querySelector("h3");
+    const text = module.querySelector("p");
+
+    heading?.remove();
+
+    if (text) {
+      text.classList.add("detail-primary-title");
+      if (html) {
+        text.innerHTML = title;
+      } else {
+        text.textContent = title;
+      }
+    }
+  };
+
+  const timeLabel = timeModule.querySelector("small");
+  if (timeLabel) timeLabel.textContent = "Thời gian";
+  setupSingleTitle(timeModule, "15:00–17:00 · 07.08.2026");
 
   const venueLabel = venueModule.querySelector("small");
-  const venueTitle = venueModule.querySelector("h3");
-  const venueText = venueModule.querySelector("p");
-
   if (venueLabel) venueLabel.textContent = "Địa điểm";
-  if (venueTitle) venueTitle.textContent = "Hội trường tầng 6";
-  if (venueText) venueText.textContent = "Tòa VIETNAM BUILDING";
+  setupSingleTitle(venueModule, "Hội trường tầng 6 · Tòa VIETNAM BUILDING");
 
   const contactIcon = contactModule.querySelector(".detail-icon");
   const contactLabel = contactModule.querySelector("small");
-  const contactTitle = contactModule.querySelector("h3");
-  const contactText = contactModule.querySelector("p");
 
   if (contactIcon) {
     contactIcon.innerHTML = `
@@ -28,11 +42,11 @@ const updateEventDetails = () => {
   }
 
   if (contactLabel) contactLabel.textContent = "Thông tin liên lạc";
-  if (contactTitle) contactTitle.textContent = "Liên hệ với Quang Sáng";
-  if (contactText) {
-    contactText.innerHTML =
-      'Liên hệ qua Messenger, Zalo hoặc gọi <a href="tel:0876033311">0876033311</a>.';
-  }
+  setupSingleTitle(
+    contactModule,
+    'Messenger, Zalo hoặc <a href="tel:0876033311">0876033311</a>',
+    true,
+  );
 
   section.querySelector(".section-heading .text-link")?.remove();
   section.dataset.detailsUpdated = "true";
