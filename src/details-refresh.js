@@ -7,18 +7,22 @@ const updateEventDetails = () => {
   const [timeModule, venueModule, contactModule] = modules;
 
   const setupSingleTitle = (module, title, html = false) => {
-    const heading = module.querySelector("h3");
-    const text = module.querySelector("p");
+    module.querySelector("h3")?.remove();
 
-    heading?.remove();
+    let text = module.querySelector("p.detail-primary-title");
+    if (!text) {
+      text = module.querySelector("p");
+    }
+    if (!text) {
+      text = document.createElement("p");
+      module.appendChild(text);
+    }
 
-    if (text) {
-      text.classList.add("detail-primary-title");
-      if (html) {
-        text.innerHTML = title;
-      } else {
-        text.textContent = title;
-      }
+    text.className = "detail-primary-title";
+    if (html) {
+      text.innerHTML = title;
+    } else {
+      text.textContent = title;
     }
   };
 
@@ -54,13 +58,26 @@ const updateEventDetails = () => {
   return true;
 };
 
-if (!updateEventDetails()) {
-  const observer = new MutationObserver(() => {
-    if (updateEventDetails()) observer.disconnect();
+const scheduleDetailsUpdate = () => {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      updateEventDetails();
+    });
   });
+};
 
-  observer.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-  });
-}
+const observer = new MutationObserver(() => {
+  if (document.querySelector("#details .detail-module")) {
+    scheduleDetailsUpdate();
+  }
+});
+
+observer.observe(document.documentElement, {
+  childList: true,
+  subtree: true,
+});
+
+scheduleDetailsUpdate();
+window.setTimeout(updateEventDetails, 120);
+window.setTimeout(updateEventDetails, 500);
+window.setTimeout(() => observer.disconnect(), 1500);
