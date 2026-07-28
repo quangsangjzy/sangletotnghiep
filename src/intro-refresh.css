@@ -1,5 +1,5 @@
-/* Intro refresh: elegant title + celebratory light bursts
-   This file intentionally overrides only the intro area. */
+/* Intro refresh: clean title + realistic fireworks
+   Overrides only the intro area. */
 
 .intro {
   min-height: 100svh;
@@ -14,16 +14,10 @@
   padding-inline: 10px;
 }
 
-.intro-copy::before {
-  content: "GRADUATION CEREMONY · CLASS OF 2026";
-  display: block;
-  margin-bottom: clamp(10px, 1.6vh, 16px);
-  color: var(--blue-deep);
-  font-family: Inter, system-ui, sans-serif;
-  font-size: clamp(10px, 0.9vw, 13px);
-  font-weight: 800;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
+/* Remove the English subtitle and the small heart badge. */
+.intro-copy::before,
+.intro-copy > span {
+  display: none !important;
 }
 
 .intro-copy h1 {
@@ -34,7 +28,7 @@
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(58px, 7.2vw, 112px);
   font-weight: 700;
-  line-height: 0.82;
+  line-height: 0.84;
   letter-spacing: -0.045em;
   text-transform: none;
   text-wrap: balance;
@@ -44,25 +38,11 @@
 .intro-copy h1::after {
   content: "";
   display: block;
-  width: clamp(72px, 8vw, 126px);
+  width: clamp(76px, 8vw, 126px);
   height: 2px;
-  margin: clamp(16px, 2.2vh, 24px) auto 0;
+  margin: clamp(18px, 2.4vh, 26px) auto 0;
   border-radius: 999px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.intro-copy > span {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  margin: -18px auto 0;
-  border: 1px solid rgba(111, 143, 163, 0.32);
-  border-radius: 999px;
-  color: var(--blue-dark);
-  background: rgba(247, 251, 253, 0.86);
-  box-shadow: 0 10px 24px rgba(64, 91, 107, 0.12);
-  font-size: 12px;
 }
 
 .envelope-stage {
@@ -74,166 +54,216 @@
   max-width: 560px;
 }
 
-/* Replace the rocket-like fireworks with restrained radial celebration bursts. */
+/* Realistic-looking fireworks adapted for a light background. */
 .intro-fireworks {
   z-index: 3;
-  opacity: 0.95;
+  opacity: 1;
 }
 
 .firework {
-  --burst-size: 150px;
+  --burst-size: 170px;
+  --cycle: 6.8s;
+  position: absolute;
   width: var(--burst-size);
   height: var(--burst-size);
   margin: calc(var(--burst-size) / -2) 0 0 calc(var(--burst-size) / -2);
   border-radius: 50%;
-  filter: drop-shadow(0 10px 24px rgba(64, 91, 107, 0.12));
+  filter: drop-shadow(0 10px 26px rgba(64, 91, 107, 0.12));
 }
 
 .firework-1 {
-  left: 12%;
-  top: 34%;
-  --burst-size: 142px;
+  left: 11%;
+  top: 31%;
+  --burst-size: 170px;
   --delay: -0.4s;
 }
 
 .firework-2 {
-  right: 10%;
-  top: 30%;
-  --burst-size: 164px;
-  --delay: -2.1s;
+  right: 9%;
+  top: 28%;
+  --burst-size: 190px;
+  --delay: -2.2s;
 }
 
 .firework-3 {
-  left: 20%;
-  bottom: 12%;
-  --burst-size: 118px;
-  --delay: -3.5s;
+  left: 18%;
+  bottom: 10%;
+  --burst-size: 140px;
+  --delay: -3.8s;
 }
 
 .firework-4 {
-  right: 18%;
-  bottom: 10%;
-  --burst-size: 128px;
-  --delay: -4.8s;
+  right: 17%;
+  bottom: 9%;
+  --burst-size: 152px;
+  --delay: -5.1s;
 }
 
 .firework-rocket {
-  display: none !important;
+  display: block !important;
+  position: absolute;
+  left: 50%;
+  bottom: -72px;
+  width: 3px;
+  height: 72px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.9) 42%, #e6a23a 76%, transparent);
+  box-shadow: 0 0 10px rgba(230, 162, 58, 0.52);
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+  opacity: 0;
+  animation: realisticRocket var(--cycle) cubic-bezier(.22,.74,.18,1) infinite !important;
+  animation-delay: var(--delay) !important;
 }
 
-.firework::before,
-.firework::after {
+.firework::before {
   content: "";
   position: absolute;
-  inset: 50%;
-  width: 0;
-  height: 0;
-  border: 1px solid rgba(230, 162, 58, 0.46);
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #fff 0 30%, #f5c36f 42%, rgba(230,162,58,.2) 70%, transparent 72%);
+  box-shadow: 0 0 18px rgba(255,255,255,.96), 0 0 34px rgba(230,162,58,.58);
+  transform: translate(-50%, -50%) scale(.15);
   opacity: 0;
-  animation: celebrationRing 5.8s ease-out infinite;
+  animation: realisticFlash var(--cycle) ease-out infinite;
   animation-delay: var(--delay);
 }
 
 .firework::after {
-  border-color: rgba(111, 143, 163, 0.42);
-  animation-delay: calc(var(--delay) + 0.18s);
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(111,143,163,.38);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(.15);
+  opacity: 0;
+  animation: realisticSmokeRing var(--cycle) ease-out infinite;
+  animation-delay: calc(var(--delay) + .08s);
 }
 
 .firework-burst {
   position: absolute;
   inset: 0;
-  animation: celebrationGlow 5.8s ease-in-out infinite;
-  animation-delay: var(--delay);
 }
 
 .firework-burst i {
+  position: absolute;
   left: 50%;
   top: 50%;
   width: 3px;
-  height: clamp(13px, 1.4vw, 21px);
+  height: clamp(16px, 1.4vw, 24px);
   border-radius: 999px;
-  transform-origin: 50% calc(var(--distance) * -0.36);
-  color: var(--gold);
-  background: linear-gradient(180deg, rgba(255,255,255,0), currentColor 55%, #fff);
-  box-shadow: 0 0 9px currentColor;
+  color: #e6a23a;
+  background: linear-gradient(180deg, rgba(255,255,255,0), currentColor 42%, #fff 84%, transparent);
+  box-shadow: 0 0 8px currentColor;
+  transform-origin: 50% 0;
   opacity: 0;
-  animation: celebrationRay 5.8s cubic-bezier(.18,.72,.2,1) infinite !important;
+  animation: realisticSpark var(--cycle) cubic-bezier(.18,.72,.2,1) infinite !important;
   animation-delay: calc(var(--delay) + var(--particle-delay)) !important;
 }
 
-.firework-burst i:nth-child(3n + 1) {
-  color: rgba(255, 255, 255, 0.96);
+.firework-burst i:nth-child(4n + 1) {
+  color: rgba(255,255,255,.98);
 }
 
-.firework-burst i:nth-child(3n + 2) {
+.firework-burst i:nth-child(4n + 2) {
   color: #82a8be;
 }
 
-.firework-burst i:nth-child(3n) {
-  color: #e6a23a;
+.firework-burst i:nth-child(4n + 3) {
+  color: #f5c36f;
 }
 
-@keyframes celebrationRay {
-  0%, 20% {
+.firework-burst i:nth-child(4n) {
+  color: #d98d25;
+}
+
+@keyframes realisticRocket {
+  0%, 9% {
     opacity: 0;
-    transform: rotate(var(--angle)) translateY(0) scaleY(0.15);
+    transform: translate(-50%, 94px) scaleY(.35);
   }
-  26% {
+  12% {
+    opacity: .9;
+  }
+  31% {
+    opacity: 1;
+    transform: translate(-50%, -10px) scaleY(1);
+  }
+  35%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -12px) scaleY(.12);
+  }
+}
+
+@keyframes realisticFlash {
+  0%, 31% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.15);
+  }
+  34% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+  42% {
+    opacity: .78;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  54%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.4);
+  }
+}
+
+@keyframes realisticSpark {
+  0%, 31% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateY(0) scaleY(.15);
+  }
+  34% {
     opacity: 1;
   }
-  45% {
-    opacity: 0.95;
-    transform: rotate(var(--angle)) translateY(calc(var(--distance) * -0.72)) scaleY(1);
+  48% {
+    opacity: .98;
+    transform: rotate(var(--angle)) translateY(calc(var(--distance) * -.62)) scaleY(1);
   }
-  62%, 100% {
+  64% {
+    opacity: .62;
+    transform: rotate(var(--angle)) translateY(calc(var(--distance) * -.95)) translateX(3px) scaleY(.72);
+  }
+  78%, 100% {
     opacity: 0;
-    transform: rotate(var(--angle)) translateY(calc(var(--distance) * -1)) scaleY(0.45);
+    transform: rotate(var(--angle)) translateY(calc(var(--distance) * -1.16)) translateX(8px) scaleY(.35);
   }
 }
 
-@keyframes celebrationRing {
-  0%, 18% {
-    width: 0;
-    height: 0;
+@keyframes realisticSmokeRing {
+  0%, 34% {
     opacity: 0;
+    transform: translate(-50%, -50%) scale(.1);
   }
-  26% {
-    opacity: 0.7;
+  43% {
+    opacity: .35;
   }
-  52% {
-    width: 76%;
-    height: 76%;
+  68% {
     opacity: 0;
+    transform: translate(-50%, -50%) scale(6.5);
   }
   100% {
     opacity: 0;
   }
 }
 
-@keyframes celebrationGlow {
-  0%, 18%, 65%, 100% {
-    filter: blur(0);
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  42% {
-    filter: blur(0.25px);
-    opacity: 0.88;
-  }
-}
-
 @media (max-height: 820px) and (min-width: 761px) {
   .intro {
-    padding-top: 102px;
+    padding-top: 104px;
     gap: 14px;
-  }
-
-  .intro-copy::before {
-    margin-bottom: 8px;
   }
 
   .intro-copy h1 {
@@ -265,28 +295,14 @@
     width: calc(100vw - 24px);
   }
 
-  .intro-copy::before {
-    max-width: 310px;
-    margin: 0 auto 10px;
-    font-size: 9px;
-    line-height: 1.5;
-    letter-spacing: 0.2em;
-  }
-
   .intro-copy h1 {
     max-width: 520px;
     font-size: clamp(49px, 14.2vw, 78px);
-    line-height: 0.84;
+    line-height: .86;
   }
 
   .intro-copy h1::after {
     margin-top: 16px;
-  }
-
-  .intro-copy > span {
-    width: 30px;
-    height: 30px;
-    margin-top: -16px;
   }
 
   .envelope-stage {
@@ -299,32 +315,32 @@
   }
 
   .firework-1 {
-    left: -1%;
-    top: 36%;
-    --burst-size: 96px;
-  }
-
-  .firework-2 {
-    right: -3%;
-    top: 31%;
+    left: -2%;
+    top: 34%;
     --burst-size: 108px;
   }
 
+  .firework-2 {
+    right: -4%;
+    top: 29%;
+    --burst-size: 118px;
+  }
+
   .firework-3 {
-    left: 9%;
-    bottom: 7%;
-    --burst-size: 82px;
+    left: 8%;
+    bottom: 6%;
+    --burst-size: 88px;
   }
 
   .firework-4 {
-    right: 8%;
-    bottom: 6%;
-    --burst-size: 86px;
+    right: 7%;
+    bottom: 5%;
+    --burst-size: 94px;
   }
 
   .firework-burst i {
     width: 2px;
-    height: 13px;
+    height: 14px;
   }
 }
 
@@ -334,14 +350,9 @@
     gap: 12px;
   }
 
-  .intro-copy::before {
-    max-width: 270px;
-    font-size: 8px;
-  }
-
   .intro-copy h1 {
     font-size: clamp(45px, 15vw, 64px);
-    line-height: 0.86;
+    line-height: .88;
   }
 
   .envelope-stage {
@@ -359,14 +370,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .firework-rocket,
   .firework::before,
   .firework::after,
-  .firework-burst,
   .firework-burst i {
     animation: none !important;
   }
 
   .firework {
-    opacity: 0.38;
+    opacity: .35;
   }
 }
