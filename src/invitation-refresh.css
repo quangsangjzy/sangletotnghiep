@@ -1,0 +1,89 @@
+/* Invitation refinements: remove decorative label and merge countdown into date panel. */
+
+.editorial-invite::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* The original standalone countdown shell is no longer shown. */
+.countdown-band {
+  display: none !important;
+}
+
+.invitation-date-panel .countdown-values {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0 4px;
+  padding: 12px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.invitation-date-panel .countdown-unit {
+  min-height: auto;
+  display: grid;
+  place-items: center;
+  padding: 2px 0;
+}
+
+.invitation-date-panel .countdown-unit + .countdown-unit::before {
+  top: 20%;
+  bottom: 20%;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.invitation-date-panel .countdown-unit strong {
+  color: #fff;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: clamp(16px, 1.65vw, 24px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* User requested numbers only, so hide all unit labels. */
+.invitation-date-panel .countdown-unit span {
+  display: none !important;
+}
+
+@media (max-width: 860px) {
+  .invitation-date-panel .countdown-values {
+    grid-area: countdown;
+    margin: 2px 0 0;
+  }
+
+  .invitation-date-panel {
+    grid-template-areas:
+      "label place"
+      "time date"
+      "countdown date"
+      "year place" !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .invitation-date-panel .countdown-values {
+    width: min(330px, 100%);
+    margin: 14px auto 0;
+  }
+
+  .invitation-date-panel .countdown-unit strong {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .invitation-date-panel .countdown-values {
+    gap: 4px;
+    padding: 10px 7px;
+    border-radius: 15px;
+  }
+
+  .invitation-date-panel .countdown-unit strong {
+    font-size: 16px;
+  }
+}
