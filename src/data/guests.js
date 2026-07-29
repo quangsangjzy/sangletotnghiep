@@ -28,20 +28,11 @@ export const GUESTS = {
     name: "Nguyệt",
     displayName: "Nguyệt",
     group: "Bạn bè",
-  },
-  "nam": {
-    name: "Minh Anh",
-    displayName: "Minh Anh",
-    group: "Bạn bè",
+  },p: "Bạn bè",
   },
   "nhumai": {
     name: "Như Mai",
     displayName: "Như Mai",
-    group: "Bạn bè",
-  },
-  "nangvungcao": {
-    name: "Thu Hiền, Yến Chi, Ánh Hoàn",
-    displayName: "Thu Hiền, Yến Chi, Ánh Hoàn",
     group: "Bạn bè",
   },
   "giangmee": {
@@ -72,6 +63,16 @@ export const GUESTS = {
     "hien": {
     name: "Thu Hiền",
     displayName: "Thu Hiền",
+    group: "Bạn bè",
+  },
+      "yenchi": {
+    name: "Yến Chi",
+    displayName: "Yến Chi",
+    group: "Bạn bè",
+  },
+      "anhhoan": {
+    name: "Ánh Hoàn",
+    displayName: "Ánh Hoàn",
     group: "Bạn bè",
   },
 };
